@@ -22,10 +22,6 @@ public class ItemProducer<T> implements Subject {
 	public List<T> getItemsProduced() {
 		return itemsProduced;
 	}
-
-	public void setItemsProduced(List<T> itemsProduced) {
-		this.itemsProduced = itemsProduced;
-	}
 	
 	public void produceItem(T item) {
 		this.itemsProduced.add(item);
