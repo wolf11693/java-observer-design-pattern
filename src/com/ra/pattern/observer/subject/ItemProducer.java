@@ -54,7 +54,7 @@ public class ItemProducer<T> implements Subject {
 	}
 
 	@Override
-	public void notifyObservers() {
+	public synchronized void notifyObservers() {
 		for(Entry<Observer, Integer> entry : this.observers.entrySet()) {
 			Observer observer = entry.getKey();
 			int nextItemToReceive = entry.getValue();
