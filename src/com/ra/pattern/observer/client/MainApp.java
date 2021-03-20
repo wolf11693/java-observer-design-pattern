@@ -24,13 +24,9 @@ public class MainApp {
 		producer.register(consumerB);
 		producer.register(consumerC);
 		
-		producer.notifyObservers();
-	
-		producer.getItemsProduced().add(new String("Pippo5"));
+		producer.produceItem(new String("Pippo5"));
 		
 		ItemConsumer<String> consumerD = new ItemConsumer<>();
 		producer.register(consumerD);
-
-		producer.notifyObservers();
 	}
 }

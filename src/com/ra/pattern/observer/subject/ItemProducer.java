@@ -26,6 +26,13 @@ public class ItemProducer<T> implements Subject {
 	public void setItemsProduced(List<T> itemsProduced) {
 		this.itemsProduced = itemsProduced;
 	}
+	
+	public void produceItem(T item) {
+		this.itemsProduced.add(item);
+		if(itemsSended < itemsProduced.size()) {
+			this.notifyObservers();
+		}
+	}
 
 	public Map<Observer, Integer> getObservers() {
 		return observers;
@@ -33,9 +40,6 @@ public class ItemProducer<T> implements Subject {
 
 	public void setObservers(Map<Observer, Integer> observers) {
 		this.observers = observers;
-		if(itemsSended < itemsProduced.size()) {
-			this.notifyObservers();
-		}
 	}
 
 	@Override
@@ -43,6 +47,7 @@ public class ItemProducer<T> implements Subject {
 		if(observer != null && !this.observers.containsKey(observer)) {
 			this.observers.put(observer, 0);
 		}
+		this.notifyObservers();
 	}
 
 	@Override
